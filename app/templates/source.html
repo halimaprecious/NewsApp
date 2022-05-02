@@ -5,3 +5,23 @@
 {{ super() }}
 <link rel="stylesheet" href="{{url_for('static',filename = 'css/index.css')}}">
 {% endblock %}
+
+{% block content %}
+<div class="container news">
+        <ul>
+            <h1>Get news updates from various sources available on our page.</h2>
+
+            {% for source in sources%}
+            <div class="card source">
+                <div class="card-body">
+                    <h1>{{source.name}}</h1>
+                    <h3>{{source.description}}</h3>
+                    <h3>Language: {{source.language}}</h3>
+                    <h3>Country: {{source.country}}</h3>
+                    <h3><a href="{{source.url}}">Visit site</a></h3>
+                </div>
+            </div><hr>
+            {% endfor %}
+        </ul>
+</div>
+{% endblock %}
