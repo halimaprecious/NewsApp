@@ -5,9 +5,9 @@
 <link rel="stylesheet" href="{{url_for('static',filename = 'css/index.css')}}">
 {% endblock %}
 
-{% block content %} <br>
+{% block content %}
 <div class="container">
-    <h2 class=" text-center">Get updated with the latest news articles</h2><br>
+    <span><p class="top">Get updated with the latest news articles</p><br></span>
     <ul>
         {% for article in articles %}
         <div class="card">
@@ -20,7 +20,7 @@
                     <p>{{article.description}}</p>
                     <p>{{article.content}}</p>
                     <p>{{article.publishedAt}}</p>
-                    <h4><a href="{{article.url}}">See More articles from source</a></h4>
+                    <h4><a href="{{article.url}}">See More from source</a></h4>
 
                 </div>
             </div>
