@@ -1,5 +1,5 @@
 import urllib.request,json
-from .models import Source
+from .models import Source,Article
 
 api_key = None
 base_url = None
@@ -38,3 +38,34 @@ def produce_results(source_list):
         source_results.append(source_object)
         
     return source_results
+
+# Articles request
+def get_news():
+    get_news_url = base_url.format(api_key)
+    with urllib.request.urlopen(get_news_url) as url:
+        get_news_data = url.read()
+        get_news_response = json.loads(get_news_data)
+
+        news_results = None
+
+        if get_news_response['articles']:
+            news_results_list = get_news_response['articles']
+            news_results = process_results(news_results_list)
+
+            return news_results
+
+def process_results(news_list):
+    news_results = []
+
+    for news_item in news_list:
+        title = news_item.get('title')
+        description = news_item.get('description')
+        url = news_item.get('url')
+        urlToImage = news_item.get('urlToImage')
+        content = news_item.get('content')
+        publishedAt= news_item.get('publishedAt')
+
+        news_object = Article(title, description,url, urlToImage, content, publishedAt)
+        news_results.append(news_object)
+
+    return news_results
