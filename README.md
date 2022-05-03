@@ -3,7 +3,7 @@
 An application that consumes the News - API and displays news sources and articles.
 
 ## Live Link
-
+https://quick-updates.herokuapp.com/
 
 ## Author
 ## Precious Halima
